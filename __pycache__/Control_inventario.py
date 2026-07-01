@@ -47,34 +47,29 @@ def leer_precios():
             print("Error: Ingrese un dato numerico decimal")
     return precio_producto
 
-precio = leer_precios()
-
-def leer_reposicion():
-    reposicion_producto = False
-    if reposicion_producto < 1:
-
-
-
-
-
-
-
+#precio = leer_precios()
 
 def leer_stock():
     validar_stock = False
     while validar_stock == False:
-        stock_producto = int(input("Ingrese la cantidad de stock: "))
-        if stock_producto >= 0 and stock_producto <= 500:
-            validar_stock = True
-        else:
-            print("Error: ingrese una cantidad entre 0 y 500")
+        try:
+            stock_producto = int(input("Ingrese la cantidad de stock: "))
+            if stock_producto >=0 and stock_producto <= 500:
+                validar_stock = True
+            else:
+                print("Error: Ingrese una cantidad entre 0 y 500")
+        except ValueError:
+            print("Error: Ingrese un valor numerico entero")
     return stock_producto
 
 stock = leer_stock()
 
-
-
-
+def leer_reposicion():
+    reposicion_producto = False
+    if stock <= 5 :
+        reposicion_producto = True
+    else:
+        reposicion_producto = False
 
 
 productos = []
@@ -85,7 +80,6 @@ while activo == False:
     opcion = leer_opcion()
     if opcion == 1:
         print("Agregar")
-        
         break
     elif opcion == 2:
         print("Buscar")
