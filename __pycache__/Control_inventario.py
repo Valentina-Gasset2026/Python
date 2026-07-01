@@ -1,4 +1,5 @@
 def mostrar_menu():
+    print("Menú")
     print("1.Agregar producto")
     print("2.Buscar producto")
     print("3.Eliminar productos")
@@ -19,11 +20,57 @@ def leer_opcion():
             print("Ha ingresado un dato invalido, debe de ingrear SOLO números enteros")
     return leer_opt #dato que va a devolver el def LEER_OPCION()
                       
-opcion = leer_opcion()
+#Opción agregar
+#validar nombre
+def leer_nombre():
+    validar_nombre = False
+    while validar_nombre == False:
+        nombre_producto = input("Ingrese el nombre del producto: ").strip
+        if nombre_producto == "" or nombre_producto == " ":
+            print("Error: El nombre del producto no debe de tener espacio y no debe de estar vacío")
+        else:
+            validar_nombre = True
+    return nombre_producto
+
+nombre = leer_nombre()
+
+def leer_precios():
+    validar_precios = False
+    while validar_precios == False:
+        try:
+            precio_producto = float(input("Ingrese el precio del producto: "))
+            if precio_producto > 0:
+                validar_precios = True
+            else :
+                print("Error: Ingrese un numero decimal mayor a 0")
+        except ValueError:
+            print("Error: Ingrese un dato numerico decimal")
+    return precio_producto
+
+precio = leer_precios()
+
+def leer_reposicion():
+    reposicion_producto = False
+    if reposicion_producto < 1:
 
 
 
 
+
+
+
+
+def leer_stock():
+    validar_stock = False
+    while validar_stock == False:
+        stock_producto = int(input("Ingrese la cantidad de stock: "))
+        if stock_producto >= 0 and stock_producto <= 500:
+            validar_stock = True
+        else:
+            print("Error: ingrese una cantidad entre 0 y 500")
+    return stock_producto
+
+stock = leer_stock()
 
 
 
@@ -31,16 +78,23 @@ opcion = leer_opcion()
 
 
 productos = []
-opcion = 0
-if opcion == 1:
-    print("Agregar")
-elif opcion == 2:
-    print("Buscar")
-elif opcion == 3:
-    print("Eliminar")
-elif opcion == 4:
-    print("Actualizar estado")
-elif opcion == 5:
-    print("Mostrar registros")
-else: 
-    print("Salir")
+cantidad_disponible_stock = 500
+activo = False
+while activo == False:
+    mostrar_menu()
+    opcion = leer_opcion()
+    if opcion == 1:
+        print("Agregar")
+        
+        break
+    elif opcion == 2:
+        print("Buscar")
+    elif opcion == 3:
+        print("Eliminar")
+    elif opcion == 4:
+        print("Actualizar estado")
+    elif opcion == 5:
+        print("Mostrar registros")
+    else: 
+        print("Salir")
+        activo = True
